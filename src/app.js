@@ -430,6 +430,32 @@ function saveContactMessage(name, email, phone, subject, message) {
   localStorage.setItem(CONTACTS_KEY, JSON.stringify(messages));
 }
 
+function navigatePage(pageName) {
+  const pages = document.querySelectorAll('.page');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  pages.forEach(page => {
+    page.classList.remove('active');
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+
+  const targetPage = document.getElementById(`${pageName}-page`);
+  if (targetPage) {
+    targetPage.classList.add('active');
+  }
+
+  const activeLink = document.querySelector(`[data-page="${pageName}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+
+  document.getElementById('mainNav').classList.remove('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeUsers();
   updateCartCount();
@@ -449,6 +475,14 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.getElementById('btnLogin').title = user.name;
   }
+
+  document.querySelectorAll('[data-page]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.getAttribute('data-page');
+      navigatePage(page);
+    });
+  });
 
   document.getElementById('categoryFilter').addEventListener('change', renderProducts);
   document.getElementById('priceFilter').addEventListener('change', renderProducts);

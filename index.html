@@ -21,10 +21,10 @@
           </div>
 
           <nav class="main-nav" id="mainNav">
-            <a href="#home" class="nav-link active">Inicio</a>
-            <a href="#products" class="nav-link">Productos</a>
-            <a href="#about" class="nav-link">Nosotros</a>
-            <a href="#contact" class="nav-link">Contacto</a>
+            <a href="javascript:void(0)" class="nav-link active" data-page="home">Inicio</a>
+            <a href="javascript:void(0)" class="nav-link" data-page="products">Productos</a>
+            <a href="javascript:void(0)" class="nav-link" data-page="about">Nosotros</a>
+            <a href="javascript:void(0)" class="nav-link" data-page="contact">Contacto</a>
           </nav>
 
           <div class="header-actions">
@@ -54,69 +54,266 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <h2 class="hero-title">Tecnología de Vanguardia</h2>
-          <p class="hero-subtitle">Los mejores productos tecnológicos del mercado peruano</p>
-          <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
-            Explorar Productos
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Filters Section -->
-    <section class="filters-section" id="products">
-      <div class="container">
-        <h2 class="section-title">Nuestros Productos</h2>
-
-        <div class="filters">
-          <div class="filter-group">
-            <label>Categoría:</label>
-            <select id="categoryFilter" class="filter-select">
-              <option value="all">Todas las Categorías</option>
-              <option value="smartphones">Smartphones</option>
-              <option value="laptops">Laptops</option>
-              <option value="accesorios">Accesorios</option>
-              <option value="audio">Audio</option>
-              <option value="gaming">Gaming</option>
-            </select>
+    <!-- Pages Container -->
+    <div id="pagesContainer">
+      <!-- Home Page -->
+      <section class="page active" id="home-page" data-page="home">
+        <section class="hero">
+          <div class="container">
+            <div class="hero-content">
+              <h2 class="hero-title">Tecnología de Vanguardia</h2>
+              <p class="hero-subtitle">Los mejores productos tecnológicos del mercado peruano</p>
+              <button class="btn btn-primary" onclick="navigatePage('products')">
+                Explorar Productos
+              </button>
+            </div>
           </div>
+        </section>
+      </section>
 
-          <div class="filter-group">
-            <label>Precio:</label>
-            <select id="priceFilter" class="filter-select">
-              <option value="all">Todos los Precios</option>
-              <option value="0-500">S/ 0 - S/ 500</option>
-              <option value="500-1500">S/ 500 - S/ 1,500</option>
-              <option value="1500-3000">S/ 1,500 - S/ 3,000</option>
-              <option value="3000+">S/ 3,000+</option>
-            </select>
+      <!-- Products Page -->
+      <section class="page" id="products-page" data-page="products">
+        <section class="filters-section">
+          <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+
+            <div class="filters">
+              <div class="filter-group">
+                <label>Categoría:</label>
+                <select id="categoryFilter" class="filter-select">
+                  <option value="all">Todas las Categorías</option>
+                  <option value="smartphones">Smartphones</option>
+                  <option value="laptops">Laptops</option>
+                  <option value="accesorios">Accesorios</option>
+                  <option value="audio">Audio</option>
+                  <option value="gaming">Gaming</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label>Precio:</label>
+                <select id="priceFilter" class="filter-select">
+                  <option value="all">Todos los Precios</option>
+                  <option value="0-500">S/ 0 - S/ 500</option>
+                  <option value="500-1500">S/ 500 - S/ 1,500</option>
+                  <option value="1500-3000">S/ 1,500 - S/ 3,000</option>
+                  <option value="3000+">S/ 3,000+</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label>Ordenar:</label>
+                <select id="sortFilter" class="filter-select">
+                  <option value="default">Destacados</option>
+                  <option value="price-asc">Precio: Menor a Mayor</option>
+                  <option value="price-desc">Precio: Mayor a Menor</option>
+                  <option value="name">Nombre A-Z</option>
+                </select>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="filter-group">
-            <label>Ordenar:</label>
-            <select id="sortFilter" class="filter-select">
-              <option value="default">Destacados</option>
-              <option value="price-asc">Precio: Menor a Mayor</option>
-              <option value="price-desc">Precio: Mayor a Menor</option>
-              <option value="name">Nombre A-Z</option>
-            </select>
+        <section class="products-section">
+          <div class="container">
+            <div class="products-grid" id="productsGrid">
+              <!-- Products will be dynamically loaded here -->
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </section>
 
-    <!-- Products Grid -->
-    <section class="products-section">
-      <div class="container">
-        <div class="products-grid" id="productsGrid">
-          <!-- Products will be dynamically loaded here -->
-        </div>
-      </div>
-    </section>
+      <!-- About Page -->
+      <section class="page" id="about-page" data-page="about">
+        <section class="about-section">
+          <div class="container">
+            <div class="about-content">
+              <div class="about-text">
+                <h2 class="section-title">Sobre NESS IND</h2>
+                <p>NESS IND es una empresa peruana dedicada a comercializar productos tecnológicos de la más alta calidad. Contamos con más de 10 años de experiencia en el mercado peruano.</p>
+                <p>Nos comprometemos a ofrecer los mejores productos, precios competitivos y un servicio al cliente excepcional. Somos distribuidores autorizados de las marcas más reconocidas del mundo.</p>
+
+                <div class="about-features">
+                  <div class="feature-card">
+                    <div class="feature-icon">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      </svg>
+                    </div>
+                    <h3>Garantía Confiable</h3>
+                    <p>Todos nuestros productos cuentan con garantía del fabricante y soporte técnico.</p>
+                  </div>
+
+                  <div class="feature-card">
+                    <div class="feature-icon">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
+                    </div>
+                    <h3>Envío Rápido</h3>
+                    <p>Entrega en 1-3 días en Lima y 3-7 días en provincias de todo Perú.</p>
+                  </div>
+
+                  <div class="feature-card">
+                    <div class="feature-icon">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                        <path d="M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24"></path>
+                        <path d="M1 12h6m6 0h6"></path>
+                        <path d="M4.22 19.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
+                        <path d="M12 19v-6"></path>
+                      </svg>
+                    </div>
+                    <h3>Mejor Precio</h3>
+                    <p>Ofrecemos los precios más competitivos del mercado tecnológico peruano.</p>
+                  </div>
+
+                  <div class="feature-card">
+                    <div class="feature-icon">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                    </div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Atención al cliente disponible para resolver tus dudas y problemas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-stats">
+                <div class="stat">
+                  <h3>10+</h3>
+                  <p>Años de Experiencia</p>
+                </div>
+                <div class="stat">
+                  <h3>50K+</h3>
+                  <p>Clientes Satisfechos</p>
+                </div>
+                <div class="stat">
+                  <h3>1000+</h3>
+                  <p>Productos Disponibles</p>
+                </div>
+                <div class="stat">
+                  <h3>100%</h3>
+                  <p>Garantía</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Contact Page -->
+      <section class="page" id="contact-page" data-page="contact">
+        <section class="contact-section">
+          <div class="container">
+            <h2 class="section-title">Contacto</h2>
+
+            <div class="contact-content">
+              <div class="contact-info">
+                <div class="info-card">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Ubicación</h4>
+                    <p>Av. Tecnológica 123, Lima 15001, Perú</p>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Teléfono</h4>
+                    <p>(01) 234-5678</p>
+                    <p>+51 987 654 321</p>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Email</h4>
+                    <p>info@nessind.com</p>
+                    <p>soporte@nessind.com</p>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="1"></circle>
+                      <path d="M12 1v6m0 6v6"></path>
+                      <path d="M4.22 4.22l4.24 4.24m5.08 0l4.24 4.24"></path>
+                      <path d="M1 12h6m6 0h6"></path>
+                      <path d="M4.22 19.78l4.24-4.24m5.08 0l4.24-4.24"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Horarios</h4>
+                    <p>Lunes - Viernes: 9:00 AM - 8:00 PM</p>
+                    <p>Sábado: 10:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
+              </div>
+
+              <form class="contact-form" id="contactForm">
+                <h3>Envíanos un Mensaje</h3>
+
+                <div class="form-group">
+                  <label>Nombre Completo</label>
+                  <input type="text" required placeholder="Tu nombre" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="tu@email.com" />
+                  </div>
+                  <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" placeholder="+51 999 888 777" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Asunto</label>
+                  <select required>
+                    <option value="">Selecciona un asunto</option>
+                    <option value="consulta">Consulta sobre Productos</option>
+                    <option value="pedido">Información de Pedido</option>
+                    <option value="soporte">Soporte Técnico</option>
+                    <option value="reclamo">Reclamo o Sugerencia</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Mensaje</label>
+                  <textarea required rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+
+                <div class="form-message" id="contactMessage"></div>
+                <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
 
     <!-- Login/Register Modal -->
     <div class="modal" id="authModal">
@@ -294,193 +491,6 @@
         </div>
       </div>
     </div>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2 class="section-title">Sobre NESS IND</h2>
-            <p>NESS IND es una empresa peruana dedicada a comercializar productos tecnológicos de la más alta calidad. Contamos con más de 10 años de experiencia en el mercado peruano.</p>
-            <p>Nos comprometemos a ofrecer los mejores productos, precios competitivos y un servicio al cliente excepcional. Somos distribuidores autorizados de las marcas más reconocidas del mundo.</p>
-
-            <div class="about-features">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </div>
-                <h3>Garantía Confiable</h3>
-                <p>Todos nuestros productos cuentan con garantía del fabricante y soporte técnico.</p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                  </svg>
-                </div>
-                <h3>Envío Rápido</h3>
-                <p>Entrega en 1-3 días en Lima y 3-7 días en provincias de todo Perú.</p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <path d="M12 1v6m0 6v6"></path>
-                    <path d="M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24"></path>
-                    <path d="M1 12h6m6 0h6"></path>
-                    <path d="M4.22 19.78l4.24-4.24m2.12-2.12l4.24-4.24"></path>
-                    <path d="M12 19v-6"></path>
-                  </svg>
-                </div>
-                <h3>Mejor Precio</h3>
-                <p>Ofrecemos los precios más competitivos del mercado tecnológico peruano.</p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <h3>Soporte 24/7</h3>
-                <p>Atención al cliente disponible para resolver tus dudas y problemas.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-stats">
-            <div class="stat">
-              <h3>10+</h3>
-              <p>Años de Experiencia</p>
-            </div>
-            <div class="stat">
-              <h3>50K+</h3>
-              <p>Clientes Satisfechos</p>
-            </div>
-            <div class="stat">
-              <h3>1000+</h3>
-              <p>Productos Disponibles</p>
-            </div>
-            <div class="stat">
-              <h3>100%</h3>
-              <p>Garantía</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <h2 class="section-title">Contacto</h2>
-
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="info-card">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div>
-                <h4>Ubicación</h4>
-                <p>Av. Tecnológica 123, Lima 15001, Perú</p>
-              </div>
-            </div>
-
-            <div class="info-card">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-              </div>
-              <div>
-                <h4>Teléfono</h4>
-                <p>(01) 234-5678</p>
-                <p>+51 987 654 321</p>
-              </div>
-            </div>
-
-            <div class="info-card">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-              </div>
-              <div>
-                <h4>Email</h4>
-                <p>info@nessind.com</p>
-                <p>soporte@nessind.com</p>
-              </div>
-            </div>
-
-            <div class="info-card">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="1"></circle>
-                  <path d="M12 1v6m0 6v6"></path>
-                  <path d="M4.22 4.22l4.24 4.24m5.08 0l4.24 4.24"></path>
-                  <path d="M1 12h6m6 0h6"></path>
-                  <path d="M4.22 19.78l4.24-4.24m5.08 0l4.24-4.24"></path>
-                </svg>
-              </div>
-              <div>
-                <h4>Horarios</h4>
-                <p>Lunes - Viernes: 9:00 AM - 8:00 PM</p>
-                <p>Sábado: 10:00 AM - 6:00 PM</p>
-              </div>
-            </div>
-          </div>
-
-          <form class="contact-form" id="contactForm">
-            <h3>Envíanos un Mensaje</h3>
-
-            <div class="form-group">
-              <label>Nombre Completo</label>
-              <input type="text" required placeholder="Tu nombre" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" required placeholder="tu@email.com" />
-              </div>
-              <div class="form-group">
-                <label>Teléfono</label>
-                <input type="tel" placeholder="+51 999 888 777" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Asunto</label>
-              <select required>
-                <option value="">Selecciona un asunto</option>
-                <option value="consulta">Consulta sobre Productos</option>
-                <option value="pedido">Información de Pedido</option>
-                <option value="soporte">Soporte Técnico</option>
-                <option value="reclamo">Reclamo o Sugerencia</option>
-                <option value="otro">Otro</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Mensaje</label>
-              <textarea required rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
-            </div>
-
-            <div class="form-message" id="contactMessage"></div>
-            <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
-          </form>
-        </div>
-      </div>
-    </section>
 
     <!-- Chatbot -->
     <button class="chatbot-toggle" id="chatbotToggle">
